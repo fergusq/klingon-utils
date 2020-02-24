@@ -197,14 +197,16 @@ impl ZrajmDictionary {
 pub fn read_dictionary(filename: &str) -> io::Result<ZrajmDictionary> {
     let file = File::open(filename)?;
     let reader = BufReader::new(file);
+    Ok(parse_dictionary(reader.lines().map(|l| l.unwrap())))
+}
 
+pub fn parse_dictionary(lines: impl IntoIterator<Item=String>) -> ZrajmDictionary {
     let mut dict = ZrajmDictionary::new();
     let mut data = false;
     let mut word = ZrajmWord::new();
     let mut prev_field = String::new();
 
-    for maybe_line in reader.lines() {
-        let line: String = maybe_line?;
+    for line in lines {
         if line == "== start-of-data ==" {
             data = true
         }
@@ -245,7 +247,7 @@ pub fn read_dictionary(filename: &str) -> io::Result<ZrajmDictionary> {
         }
     }
 
-    Ok(dict)
+    dict
 }
 
 fn parse_tlh(word: &mut ZrajmWord, fields: &Vec<&str>) {
