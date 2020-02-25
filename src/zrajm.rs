@@ -178,6 +178,10 @@ impl ZrajmDictionary {
         }
     }
 
+    pub fn parse(lines: impl IntoIterator<Item=String>) -> ZrajmDictionary {
+        parse_dictionary(lines)
+    }
+
     fn push_word(&mut self, word: &ZrajmWord) {
         self.words.push(word.clone());
 
@@ -200,7 +204,7 @@ pub fn read_dictionary(filename: &str) -> io::Result<ZrajmDictionary> {
     Ok(parse_dictionary(reader.lines().map(|l| l.unwrap())))
 }
 
-pub fn parse_dictionary(lines: impl IntoIterator<Item=String>) -> ZrajmDictionary {
+fn parse_dictionary(lines: impl IntoIterator<Item=String>) -> ZrajmDictionary {
     let mut dict = ZrajmDictionary::new();
     let mut data = false;
     let mut word = ZrajmWord::new();

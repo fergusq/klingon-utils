@@ -7,7 +7,7 @@ pub struct Letter {
 }
 
 impl Letter {
-    fn from(letter: String) -> Letter {
+    fn new(letter: String) -> Letter {
         Letter {
             letter
         }
@@ -45,7 +45,7 @@ pub fn letters(mut word: &str) -> Vec<Letter> {
     }
     let mut ans = Vec::new();
     while let Some(i) = RE.find_at(word, 0) {
-        ans.push(Letter::from(word[..i.end()].to_string()));
+        ans.push(Letter::new(word[..i.end()].to_string()));
         word = &word[i.end()..];
     }
     ans
