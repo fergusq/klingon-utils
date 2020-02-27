@@ -157,6 +157,38 @@ impl ZrajmPOS {
         }
     }
 }
+impl std::fmt::Display for ZrajmPOS {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", match self {
+            ZrajmPOS::Adverbial => "adverbial",
+            ZrajmPOS::Conjunction => "conjunction",
+            ZrajmPOS::Exclamation => "exclamation",
+            ZrajmPOS::Name => "name",
+            ZrajmPOS::Noun => "noun",
+            ZrajmPOS::NounSuffix1 => "noun suffix type 1",
+            ZrajmPOS::NounSuffix2 => "noun suffix type 2",
+            ZrajmPOS::NounSuffix3 => "noun suffix type 3",
+            ZrajmPOS::NounSuffix4 => "noun suffix type 4",
+            ZrajmPOS::NounSuffix5 => "noun suffix type 5",
+            ZrajmPOS::Numeral => "numeral",
+            ZrajmPOS::Pronoun => "pronoun",
+            ZrajmPOS::QuestionWord => "question word",
+            ZrajmPOS::Verb => "verb",
+            ZrajmPOS::VerbPrefix => "verb prefix",
+            ZrajmPOS::VerbSuffix1 => "verb suffix type 1",
+            ZrajmPOS::VerbSuffix2 => "verb suffix type 2",
+            ZrajmPOS::VerbSuffix3 => "verb suffix type 3",
+            ZrajmPOS::VerbSuffix4 => "verb suffix type 4",
+            ZrajmPOS::VerbSuffix5 => "verb suffix type 5",
+            ZrajmPOS::VerbSuffix6 => "verb suffix type 6",
+            ZrajmPOS::VerbSuffix7 => "verb suffix type 7",
+            ZrajmPOS::VerbSuffix8 => "verb suffix type 8",
+            ZrajmPOS::VerbSuffix9 => "verb suffix type 9",
+            ZrajmPOS::VerbSuffixRover  => "verb suffix type rover",
+            ZrajmPOS::Unknown  => "unknown",
+        })
+    }
+}
 
 #[derive(Debug)]
 pub struct ZrajmDictionary {
